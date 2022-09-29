@@ -1,0 +1,5 @@
+.content-container {
+    margin: 100px 80px;
+    display: flex;
+    justify-content: space-between;
+}
