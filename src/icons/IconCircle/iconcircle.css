@@ -4,3 +4,9 @@
     background: #B7280F;
     border-radius: 50%;
 }
+
+.circle-container {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}

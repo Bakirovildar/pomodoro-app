@@ -9,8 +9,8 @@
 
 .description-add-item {
     display: flex;
-    align-items: center;
-    margin-left: 25px;
+    align-items: start;
+    justify-content: start;
 }
 
 .description-add-item span{
