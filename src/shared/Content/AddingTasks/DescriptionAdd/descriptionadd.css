@@ -1,0 +1,24 @@
+.description-add-header {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #333333;
+}
+
+.description-add-item {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.description-add-item span{
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 33px;
+    color: #333333;
+    margin-left: 15px;
+}
