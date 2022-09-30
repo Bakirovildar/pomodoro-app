@@ -42,3 +42,26 @@
     line-height: 17px;
     color: #FFFFFF;
 }
+
+.timer-content-timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+}
+
+.timer span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 150px;
+    line-height: 179px;
+    color: #333333;
+    margin-right: 25px;
+}
