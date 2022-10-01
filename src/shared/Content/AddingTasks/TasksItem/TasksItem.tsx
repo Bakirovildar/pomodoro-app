@@ -21,13 +21,13 @@ export function TasksItem() {
     return (
         <div>
             {
-                tasks.map(({id, valueTask}: ITasks) => (
+                tasks.map(({id, valueTask}: ITasks, idx: number) => (
                     <div
                         className='tasks-item-container'
                         key={id}
                     >
                         <div className='tasks-item-desc'>
-                            <div className='tasks-item-num'>1</div>
+                            <div className='tasks-item-num'>{idx + 1}</div>
                             <span>{ valueTask }</span>
                         </div>
                         <Dropdown button={<IconDropdown/>} id={id}/>
