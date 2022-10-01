@@ -11,8 +11,9 @@ export function AddForm() {
     const addTaskHandle = (event: FormEvent) => {
         event.preventDefault()
         const newTask = {id: uuid4(), valueTask}
-        console.log('task', newTask)
+        setValueTask('')
         dispatch(addTask(newTask))
+
     }
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ export function AddForm() {
                     type="text"
                     placeholder={'Название задачи'}
                     onChange={handleChange}
+                    value={valueTask}
                 />
                 <button className='btn-add'>Добавить</button>
             </form>
