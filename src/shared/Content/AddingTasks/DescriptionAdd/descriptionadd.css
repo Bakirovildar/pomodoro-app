@@ -1,5 +1,4 @@
 .description-add-header {
-    font-family: 'SF UI Display';
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -13,8 +12,7 @@
     justify-content: start;
 }
 
-.description-add-item span{
-    font-family: 'SF UI Display';
+.description-add-item span {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

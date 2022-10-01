@@ -35,10 +35,10 @@ export function Dropdown({button}: IDropdown) {
             {
                 isOpen
                     ? <div className='dropdown-item'>
-                        <div className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
-                        <div className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
-                        <div className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
-                        <div className='dropdown-item-list'><IconDelete/><span>Удалить</span></div>
+                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
+                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
+                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
+                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconDelete/><span>Удалить</span></div>
                     </div>
                     : ''
             }
