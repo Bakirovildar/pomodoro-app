@@ -30,7 +30,7 @@ export function AddForm() {
                     onChange={handleChange}
                     value={valueTask}
                 />
-                <button className='btn-add'>Добавить</button>
+                <button className='btn-add' disabled={!valueTask}>Добавить</button>
             </form>
         </div>
     );
