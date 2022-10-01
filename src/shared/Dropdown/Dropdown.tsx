@@ -1,5 +1,9 @@
 import React, {ReactNode, useState} from 'react';
 import './dropdown.css';
+import {IconIncrease} from "../../icons/IconIncrease";
+import {IconDecreasy} from "../../icons/IconDecreasy";
+import {IconEdit} from "../../icons/IconEdit";
+import {IconDelete} from "../../icons/IconDelete";
 
 interface IDropdown {
   button: ReactNode
@@ -16,7 +20,10 @@ export function Dropdown({button}: IDropdown) {
         {
           isOpen
               ?<div className='dropdown-item'>
-                  ddddddd
+                  <div className='dropdown-item-list'><IconIncrease /><span>Увеличить</span></div>
+                  <div className='dropdown-item-list'><IconDecreasy /><span>Уменьшить</span></div>
+                  <div className='dropdown-item-list'><IconEdit /><span>Редактировать</span></div>
+                  <div className='dropdown-item-list'><IconDelete /><span>Удалить</span></div>
               </div>
               : ''
         }
