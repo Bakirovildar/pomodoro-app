@@ -1,5 +1,5 @@
 import {Reducer} from "redux";
-import {Tasks, TASKS} from "./action";
+import {DeleteTask, Tasks, TASKS} from "./action";
 
 export type RootState = {
     descriptionAdd: Array<any>,
@@ -21,6 +21,7 @@ const initialState: RootState = {
 }
 
 type MyAction = Tasks
+    | DeleteTask
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -29,7 +30,11 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                 ...state,
                 tasks: [action.tasks, ...state.tasks]
             }
-
+        case "DELETETASK":
+            return {
+                ...state,
+                tasks: state.tasks.filter((i: any) => i.id !== action.id)
+            }
         default:
             return state
     }

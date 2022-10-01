@@ -12,3 +12,15 @@ export const addTask: ActionCreator<Tasks> = (task) => ({
     tasks: task
 })
 
+export const DELETETASK = 'DELETETASK'
+
+export type DeleteTask = {
+    type: typeof DELETETASK,
+    id: any
+}
+
+export const deleteTaskAction: ActionCreator<DeleteTask> = (id) => ({
+    type: DELETETASK,
+    id
+})
+

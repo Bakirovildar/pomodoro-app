@@ -1,20 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './tasksitem.css';
 import {Dropdown} from "../../../Dropdown";
 import {IconDropdown} from "../../../../icons/IconDropdownButton";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../../store/store";
+
+interface ITasks {
+    id: string,
+    valueTask: string
+}
 
 export function TasksItem() {
+    const [timeTask, setTimeTask]: any = useState(0)
+    const tasks: any = useSelector<RootState>(state => state.tasks)
+
+    useEffect(() => {
+        tasks.map(({time}: {time: number}) => setTimeTask(timeTask + time))
+    }, [tasks])
+
     return (
         <div>
-            <div className='tasks-item-container'>
-                <div className='tasks-item-desc'>
-                    <div className='tasks-item-num'>1</div>
-                    <span>Сверстать сайт</span>
-                </div>
-                <Dropdown button={<IconDropdown/>}/>
-            </div>
+            {
+                tasks.map(({id, valueTask}: ITasks) => (
+                    <div
+                        className='tasks-item-container'
+                        key={id}
+                    >
+                        <div className='tasks-item-desc'>
+                            <div className='tasks-item-num'>1</div>
+                            <span>{ valueTask }</span>
+                        </div>
+                        <Dropdown button={<IconDropdown/>} id={id}/>
+                    </div>
+                ))
+            }
             <div className='sumTime'>
-                25 мин
+                {
+                    timeTask
+                } мин
             </div>
         </div>
     );
