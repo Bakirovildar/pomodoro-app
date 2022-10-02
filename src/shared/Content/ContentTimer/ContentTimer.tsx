@@ -2,15 +2,25 @@ import React, {useEffect, useState} from 'react';
 import './contenttimer.css';
 import {IconAddTime} from "../../../icons/IconAddTime";
 import {getPadTime} from "../../../helpers/getPadTime";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../store/store";
 
 export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(25 * 60)
     const [isCounting, setIsCounting] = useState(false)
+    const [task, setTask]: any = useState(null)
+
+    const tasks: any = useSelector<RootState>(state => state.tasks)
 
     const minutes = getPadTime(Math.floor(timeLeft / 60))
     const seconds = getPadTime(timeLeft - minutes * 60)
 
     useEffect(() => {
+        setTask(tasks[0])
+        if (!task) return
+
+        setTimeLeft(task.time * 60)
+
         const interval = setInterval(() => {
             isCounting &&
             setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
@@ -21,7 +31,7 @@ export function ContentTimer() {
         return () => {
             clearInterval(interval)
         }
-    }, [isCounting])
+    }, [isCounting, tasks, task])
 
     const handleStart = () => {
         setIsCounting(true)
@@ -40,7 +50,11 @@ export function ContentTimer() {
         <div className='timer-container'>
             <div className='timer-content'>
                 <div className='timer-content-header'>
-                    <div>Сверстать сайт</div>
+                    {
+                        !task
+                            ? <div>Создайте задачу</div>
+                            : <div>{task.valueTask}</div>
+                    }
                     <span>Помидор 1</span>
                 </div>
                 <div className='timer-content-timer-container'>

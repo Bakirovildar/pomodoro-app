@@ -10,7 +10,7 @@ export function AddForm() {
 
     const addTaskHandle = (event: FormEvent) => {
         event.preventDefault()
-        const newTask = {id: uuid4(), valueTask, time: 25}
+        const newTask = {id: uuid4(), valueTask, time: 20}
         setValueTask('')
         dispatch(addTask(newTask))
 
