@@ -5,8 +5,7 @@ import {IconDecreasy} from "../../icons/IconDecreasy";
 import {IconEdit} from "../../icons/IconEdit";
 import {IconDelete} from "../../icons/IconDelete";
 import {useDispatch} from "react-redux";
-import {RootState} from "../../store/store";
-import {deleteTaskAction} from "../../store/action";
+import {addMinusCountTime, addPlusCountTime, deleteTaskAction} from "../../store/action";
 
 interface IDropdown {
     button: ReactNode
@@ -37,6 +36,14 @@ export function Dropdown({button, id}: IDropdown) {
         dispatch(deleteTaskAction(id))
     }
 
+    const minusCountHandle = () => {
+        dispatch(addMinusCountTime(id))
+    }
+
+    const plusCountHandle = () => {
+        dispatch(addPlusCountTime(id))
+    }
+
     return (
         <div ref={dropdownElement} className='dropdown-wrapper'>
             <div onClick={() => setIsOpen(!isOpen)}>
@@ -45,8 +52,8 @@ export function Dropdown({button, id}: IDropdown) {
             {
                 isOpen
                     ? <div className='dropdown-item'>
-                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
-                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
+                        <div onClick={plusCountHandle} className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
+                        <div onClick={minusCountHandle} className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
                         <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
                         <div onClick={deleteTaskHandle} className='dropdown-item-list'><IconDelete/><span>Удалить</span></div>
                     </div>

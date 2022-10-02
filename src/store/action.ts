@@ -24,15 +24,27 @@ export const deleteTaskAction: ActionCreator<DeleteTask> = (id) => ({
     id
 })
 
-export const ADDCOUNTTIME = 'ADDCOUNTTIME'
+export const ADDPLUSCOUNTTIME = 'ADDPLUSCOUNTTIME'
 
 export type AddCountTime = {
-    type: typeof ADDCOUNTTIME
+    type: typeof ADDPLUSCOUNTTIME
     id: any
 }
 
-export const addCountTime: ActionCreator<AddCountTime> = (id) => ({
-    type: ADDCOUNTTIME,
+export const addPlusCountTime: ActionCreator<AddCountTime> = (id) => ({
+    type: ADDPLUSCOUNTTIME,
+    id
+})
+
+export const ADDMINUSCOUNTTIME = 'ADDMINUSCOUNTTIME'
+
+export type AddMinusCountTime = {
+    type: typeof ADDMINUSCOUNTTIME
+    id: any
+}
+
+export const addMinusCountTime: ActionCreator<AddMinusCountTime> = (id) => ({
+    type: ADDMINUSCOUNTTIME,
     id
 })
 
