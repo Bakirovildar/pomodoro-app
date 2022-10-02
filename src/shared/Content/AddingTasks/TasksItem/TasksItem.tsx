@@ -14,10 +14,6 @@ export function TasksItem() {
     const [timeTask, setTimeTask]: any = useState(0)
     const tasks: any = useSelector<RootState>(state => state.tasks)
 
-    useEffect(() => {
-        tasks.map(({time}: {time: number}) => setTimeTask(timeTask + time))
-    }, [tasks])
-
     return (
         <div>
             {

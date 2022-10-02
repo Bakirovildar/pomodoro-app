@@ -52,6 +52,10 @@
     flex-direction: column;
 }
 
+.timer-content-add {
+    cursor: pointer;
+}
+
 .timer {
     display: flex;
     align-items: center;
