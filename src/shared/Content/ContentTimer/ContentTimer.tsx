@@ -2,14 +2,17 @@ import React, {useEffect, useState} from 'react';
 import './contenttimer.css';
 import {IconAddTime} from "../../../icons/IconAddTime";
 import {getPadTime} from "../../../helpers/getPadTime";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
+import {addCountTime} from "../../../store/action";
 
 export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(25 * 60)
     const [isCounting, setIsCounting] = useState(false)
     const [task, setTask]: any = useState(null)
+    const [id,setId]: any = useState(null)
 
+    const dispatch = useDispatch()
     const tasks: any = useSelector<RootState>(state => state.tasks)
 
     const minutes = getPadTime(Math.floor(timeLeft / 60))
@@ -46,6 +49,12 @@ export function ContentTimer() {
         setIsCounting(false)
     }
 
+    const handleTimePlus = () => {
+        if (task.id) {
+            dispatch(addCountTime(task.id))
+        }
+    }
+
     return (
         <div className='timer-container'>
             <div className='timer-content'>
@@ -62,7 +71,7 @@ export function ContentTimer() {
                         <span>{minutes}: {seconds}</span>
                         <div
                             className='timer-content-add'
-                            onClick={() => setTimeLeft(timeLeft + 60)}
+                            onClick={handleTimePlus}
                         >
                             <IconAddTime/>
                         </div>

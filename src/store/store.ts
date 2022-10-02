@@ -1,5 +1,5 @@
 import {Reducer} from "redux";
-import {DeleteTask, Tasks, TASKS} from "./action";
+import {ADDCOUNTTIME, AddCountTime, DELETETASK, DeleteTask, Tasks, TASKS} from "./action";
 
 export type RootState = {
     descriptionAdd: Array<any>,
@@ -22,6 +22,7 @@ const initialState: RootState = {
 
 type MyAction = Tasks
     | DeleteTask
+    | AddCountTime
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -30,10 +31,21 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                 ...state,
                 tasks: [action.tasks, ...state.tasks]
             }
-        case "DELETETASK":
+        case DELETETASK:
             return {
                 ...state,
                 tasks: state.tasks.filter((i: any) => i.id !== action.id)
+            }
+        case ADDCOUNTTIME:
+            return {
+                ...state,
+                tasks: state.tasks.map((i: any) => {
+                    if (i.id === action.id) {
+                        i.time += 1
+                    }
+
+                    return i
+                })
             }
         default:
             return state
