@@ -10,7 +10,6 @@ export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(25 * 60)
     const [isCounting, setIsCounting] = useState(false)
     const [task, setTask]: any = useState(null)
-    const [id,setId]: any = useState(null)
 
     const dispatch = useDispatch()
     const tasks: any = useSelector<RootState>(state => state.tasks)
@@ -24,6 +23,9 @@ export function ContentTimer() {
 
         setTimeLeft(task.time * 60)
 
+    }, [tasks, task])
+
+    useEffect(() => {
         const interval = setInterval(() => {
             isCounting &&
             setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
@@ -45,7 +47,7 @@ export function ContentTimer() {
     }
 
     const handleStop = () => {
-        setTimeLeft(25 * 60)
+        setTimeLeft(task.time * 60)
         setIsCounting(false)
     }
 
