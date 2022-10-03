@@ -7,8 +7,9 @@ import {RootState} from "../../../store/store";
 import {addPlusCountTime} from "../../../store/action";
 
 export function ContentTimer() {
-    const [timeLeft, setTimeLeft] = useState(25 * 60)
+    const [timeLeft, setTimeLeft] = useState(20 * 60)
     const [isCounting, setIsCounting] = useState(false)
+    const [isPause, setIsPause] = useState(false)
     const [task, setTask]: any = useState(null)
 
     const dispatch = useDispatch()
@@ -40,10 +41,12 @@ export function ContentTimer() {
 
     const handleStart = () => {
         setIsCounting(true)
+        setIsPause(false)
     }
 
     const handlePause = () => {
         setIsCounting(false)
+        setIsPause(true)
     }
 
     const handleStop = () => {
@@ -57,10 +60,20 @@ export function ContentTimer() {
         }
     }
 
+    const styleTime = () => {
+        if (isCounting) {
+            return 'timer-content-header-isCounting'
+        } else if (isPause) {
+            return 'timer-content-header-isPause'
+        } else {
+            return 'timer-content-header'
+        }
+    }
+
     return (
         <div className='timer-container'>
             <div className='timer-content'>
-                <div className='timer-content-header'>
+                <div className={styleTime()}>
                     {
                         !task
                             ? <div>Создайте задачу</div>
@@ -69,7 +82,7 @@ export function ContentTimer() {
                     <span>Помидор 1</span>
                 </div>
                 <div className='timer-content-timer-container'>
-                    <div className='timer'>
+                    <div className={isCounting ? 'timer-active' : 'timer'}>
                         <span>{minutes}: {seconds}</span>
                         <div
                             className='timer-content-add'
@@ -82,27 +95,52 @@ export function ContentTimer() {
                         {
                             !task
                                 ? <span>Создайте задачу</span>
-                                : <><div>Задача 1 -</div> <span>{task.valueTask}</span></>
+                                : <>
+                                    <div>Задача 1 -</div>
+                                    <span>{task.valueTask}</span></>
                         }
                     </div>
-                    <div className='timer-btns'>
-                        {
-                            isCounting
-                                ? <div
-                                    className='btn-start'
-                                    onClick={handlePause}
-                                >Пауза</div>
-                                : <div
+                    {
+                        !isPause
+                            ? <div className='timer-btns'>
+                                {
+                                    isCounting
+                                        ? <div
+                                            className='btn-start'
+                                            onClick={handlePause}
+                                        >Пауза</div>
+                                        : <div
+                                            className='btn-start'
+                                            onClick={handleStart}
+                                        >Старт</div>
+                                }
+                                {
+                                    isCounting
+                                        ? <div
+                                            className='btn-stop-counting'
+                                            onClick={handleStop}
+                                        >Стоп
+                                        </div>
+                                        : <div
+                                            className='btn-stop'
+                                            onClick={handleStop}
+                                        >Стоп
+                                        </div>
+                                }
+                            </div>
+                            : <div className='timer-btns'>
+                                <div
                                     className='btn-start'
                                     onClick={handleStart}
-                                >Старт</div>
-                        }
-                        <div
-                            className='btn-stop'
-                            onClick={handleStop}
-                        >Стоп
-                        </div>
-                    </div>
+                                >Продолжить
+                                </div>
+
+                                <div
+                                    className='btn-end'
+                                >Сделано
+                                </div>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

@@ -23,6 +23,74 @@
     align-items: center;
 }
 
+.timer-content-header-isCounting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: #DC3E22;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timer-content-header-isCounting div {
+    padding: 0 40px;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.timer-content-header-isCounting span {
+    padding: 0 40px;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.timer-content-header-isPause {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: #A8B64F;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.timer-content-header-isPause div {
+    padding: 0 40px;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.timer-content-header-isPause span {
+    padding: 0 40px;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+
 .timer-content-header div {
     padding: 0 40px;
     font-family: 'SF UI Display';
@@ -60,6 +128,22 @@
     display: flex;
     align-items: center;
 }
+
+.timer-active {
+    display: flex;
+    align-items: center;
+}
+
+.timer-active span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 200;
+    color: #DC3E22;
+    font-size: 150px;
+    line-height: 179px;
+    margin-right: 25px;
+}
+
 
 .timer span {
     font-family: 'SF UI Display';
@@ -122,6 +206,40 @@
     width: 138px;
     height: 51px;
     color: #C4C4C4;
+    border: 2px solid #C4C4C4;
+    cursor: pointer;
+}
+
+.btn-stop-counting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 138px;
+    height: 51px;
+    color: #DC3E22;
+    border: 2px solid #DC3E22;
+    cursor: pointer;
+}
+
+.btn-stop-counting:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 138px;
+    height: 51px;
+    color: white;
+    background: #DC3E22;
+    cursor: pointer;
+}
+
+.btn-end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 138px;
+    height: 51px;
+    color: white;
+    background: #DC3E22;
     border: 2px solid #C4C4C4;
     cursor: pointer;
 }
