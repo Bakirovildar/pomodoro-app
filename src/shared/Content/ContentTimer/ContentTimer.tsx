@@ -79,8 +79,11 @@ export function ContentTimer() {
                         </div>
                     </div>
                     <div className='timer-description'>
-                        <div>Задача 1 -</div>
-                        <span>Сверстать сайт</span>
+                        {
+                            !task
+                                ? <span>Создайте задачу</span>
+                                : <><div>Задача 1 -</div> <span>{task.valueTask}</span></>
+                        }
                     </div>
                     <div className='timer-btns'>
                         {
