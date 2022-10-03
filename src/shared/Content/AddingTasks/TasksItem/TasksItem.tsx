@@ -20,12 +20,14 @@ export function TasksItem() {
         let countTime = 0
         tasks.map((i:any) => countTime += i.time)
         setTimeTask(countTime)
-        setHoursTime(Math.floor(countTime / 60))
+        const hours = Math.floor(countTime / 60)
+        setHoursTime(hours)
 
         if (countTime > 60) {
             const time = (countTime / 60).toString()
-            const minuts = time.slice(2, 4)
-            setMinutsTime(Math.ceil(+('0.'+ minuts) * 60))
+            const minutes = time.slice(2, 4)
+            const ceilMinuts = Math.ceil(+('0.'+ minutes) * 60)
+            setMinutsTime(ceilMinuts)
         }
     }, [tasks])
 
