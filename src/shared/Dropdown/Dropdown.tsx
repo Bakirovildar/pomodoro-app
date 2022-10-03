@@ -45,6 +45,11 @@ export function Dropdown({button, id, clickEditItem}: IDropdown) {
         dispatch(addPlusCountTime(id))
     }
 
+    const editHandle = () => {
+        setIsOpen(false)
+        clickEditItem(id)
+    }
+
     return (
         <div ref={dropdownElement} className='dropdown-wrapper'>
             <div onClick={() => setIsOpen(!isOpen)}>
@@ -55,7 +60,7 @@ export function Dropdown({button, id, clickEditItem}: IDropdown) {
                     ? <div className='dropdown-item'>
                         <div onClick={plusCountHandle} className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
                         <div onClick={minusCountHandle} className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
-                        <div onClick={() => clickEditItem(id)} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
+                        <div onClick={editHandle} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
                         <div onClick={deleteTaskHandle} className='dropdown-item-list'><IconDelete/><span>Удалить</span></div>
                     </div>
                     : ''
