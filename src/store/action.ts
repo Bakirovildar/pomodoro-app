@@ -48,3 +48,17 @@ export const addMinusCountTime: ActionCreator<AddMinusCountTime> = (id) => ({
     id
 })
 
+export const EDITVALUETASK = 'EDITVALUETASK'
+
+export type EditValueAction = {
+    type: typeof EDITVALUETASK
+    value: string
+    id: any
+}
+
+export const editValueTask: ActionCreator<EditValueAction> = (value, id) => ({
+    type: EDITVALUETASK,
+    value,
+    id
+})
+

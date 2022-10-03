@@ -10,9 +10,10 @@ import {addMinusCountTime, addPlusCountTime, deleteTaskAction} from "../../store
 interface IDropdown {
     button: ReactNode
     id: any
+    clickEditItem: any
 }
 
-export function Dropdown({button, id}: IDropdown) {
+export function Dropdown({button, id, clickEditItem}: IDropdown) {
     const [isOpen, setIsOpen] = useState(false)
     const dropdownElement = useRef<HTMLDivElement>(null)
     const dispatch = useDispatch()
@@ -54,7 +55,7 @@ export function Dropdown({button, id}: IDropdown) {
                     ? <div className='dropdown-item'>
                         <div onClick={plusCountHandle} className='dropdown-item-list'><IconIncrease/><span>Увеличить</span></div>
                         <div onClick={minusCountHandle} className='dropdown-item-list'><IconDecreasy/><span>Уменьшить</span></div>
-                        <div onClick={() => setIsOpen(false)} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
+                        <div onClick={() => clickEditItem(id)} className='dropdown-item-list'><IconEdit/><span>Редактировать</span></div>
                         <div onClick={deleteTaskHandle} className='dropdown-item-list'><IconDelete/><span>Удалить</span></div>
                     </div>
                     : ''

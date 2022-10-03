@@ -5,7 +5,7 @@ import {
     ADDMINUSCOUNTTIME,
     ADDPLUSCOUNTTIME,
     DELETETASK,
-    DeleteTask,
+    DeleteTask, EditValueAction, EDITVALUETASK,
     Tasks,
     TASKS
 } from "./action";
@@ -33,6 +33,7 @@ type MyAction = Tasks
     | DeleteTask
     | AddCountTime
     | AddMinusCountTime
+    | EditValueAction
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -63,6 +64,17 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                 tasks: state.tasks.map((i: any) => {
                     if (i.id === action.id) {
                         i.time -= 1
+                    }
+
+                    return i
+                })
+            }
+        case EDITVALUETASK:
+            return {
+                ...state,
+                tasks: state.tasks.map((i: any) => {
+                    if (i.id === action.id) {
+                        i.valueTask = action.value
                     }
 
                     return i

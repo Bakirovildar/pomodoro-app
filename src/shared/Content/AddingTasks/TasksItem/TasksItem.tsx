@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './tasksitem.css';
 import {Dropdown} from "../../../Dropdown";
 import {IconDropdown} from "../../../../icons/IconDropdownButton";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../../store/store";
+import {editValueTask} from "../../../../store/action";
 
 interface ITasks {
     id: string,
@@ -14,6 +15,10 @@ export function TasksItem() {
     const [timeTask, setTimeTask]: any = useState(0)
     const [hoursTime, setHoursTime] = useState(0)
     const [minutesTime, setMinutesTime] = useState(0)
+    const [idTask, setIdTask] = useState('')
+
+    const dispatch = useDispatch()
+
     const tasks: any = useSelector<RootState>(state => state.tasks)
 
     useEffect(() => {
@@ -31,21 +36,39 @@ export function TasksItem() {
         }
     }, [tasks])
 
+    const clickEditItem = (id: any) => {
+        setIdTask(id)
+    }
+
+    const handleChangeEdit = (event:ChangeEvent<HTMLInputElement>) => {
+        dispatch(editValueTask(event.target.value, idTask))
+    }
+
     return (
         <div>
             {
-                tasks.map(({id, valueTask}: ITasks, idx: number) => (
-                    <div
-                        className='tasks-item-container'
-                        key={id}
-                    >
-                        <div className='tasks-item-desc'>
-                            <div className='tasks-item-num'>{idx + 1}</div>
-                            <span>{ valueTask }</span>
+                tasks.map(({id, valueTask}: ITasks, idx: number) => {
+                    return (
+                        <div
+                            className='tasks-item-container'
+                            key={id}
+                        >
+                            <div className='tasks-item-desc'>
+                                <div className='tasks-item-num'>{idx + 1}</div>
+                                {
+                                    id === idTask
+                                        ? <input
+                                            className='inpt-edit'
+                                            value={valueTask}
+                                            onChange={handleChangeEdit}
+                                            type="text"/>
+                                        : <span>{ valueTask }</span>
+                                }
+                            </div>
+                            <Dropdown button={<IconDropdown/>} id={id} clickEditItem={clickEditItem}/>
                         </div>
-                        <Dropdown button={<IconDropdown/>} id={id}/>
-                    </div>
-                ))
+                    )
+                })
             }
             <div className='sumTime'>
                 {
