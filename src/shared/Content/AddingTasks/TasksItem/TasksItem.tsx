@@ -13,7 +13,7 @@ interface ITasks {
 export function TasksItem() {
     const [timeTask, setTimeTask]: any = useState(0)
     const [hoursTime, setHoursTime] = useState(0)
-    const [minutsTime, setMinutsTime] = useState(0)
+    const [minutesTime, setMinutesTime] = useState(0)
     const tasks: any = useSelector<RootState>(state => state.tasks)
 
     useEffect(() => {
@@ -26,8 +26,8 @@ export function TasksItem() {
         if (countTime > 60) {
             const time = (countTime / 60).toString()
             const minutes = time.slice(2, 4)
-            const ceilMinuts = Math.ceil(+('0.'+ minutes) * 60)
-            setMinutsTime(ceilMinuts)
+            const ceilMinutes = Math.ceil(+('0.'+ minutes) * 60)
+            setMinutesTime(ceilMinutes)
         }
     }, [tasks])
 
@@ -51,7 +51,7 @@ export function TasksItem() {
                 {
                     timeTask < 60
                         ? <>{timeTask} мин</>
-                        : minutsTime === 0 ? <>{hoursTime} ч</> : <>{hoursTime} ч {minutsTime} мин</>
+                        : minutesTime === 0 ? <>{hoursTime} ч</> : <>{hoursTime} ч {minutesTime} мин</>
                 }
             </div>
         </div>
