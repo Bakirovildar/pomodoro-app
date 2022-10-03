@@ -18,7 +18,7 @@ export function TasksItem() {
     const [idTask, setIdTask] = useState('')
     const [id, setId] = useState('')
 
-    const inputRef = useRef<HTMLInputElement>(null)
+    const inputRef: any = useRef<HTMLInputElement>(null)
 
     const dispatch = useDispatch()
 
@@ -56,7 +56,9 @@ export function TasksItem() {
     }, [idTask])
 
     const clickEditItem = (id: any) => {
-        setTimeout(()=> {setIdTask(id)}, 200)
+        setTimeout(()=> {
+            setIdTask(id)
+        }, 200)
     }
 
     const handleChangeEdit = (event: ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +80,7 @@ export function TasksItem() {
                                     id === idTask
                                         ? <input
                                             ref={inputRef}
+                                            autoFocus={inputRef}
                                             className='inpt-edit'
                                             value={valueTask}
                                             onChange={handleChangeEdit}
