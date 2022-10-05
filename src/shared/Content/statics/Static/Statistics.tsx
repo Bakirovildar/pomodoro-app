@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './static.css';
+import styles from './statistics.css';
 
-export function Static() {
+export function Statistics() {
   return (
       <div>static</div>
   );
