@@ -11,7 +11,7 @@ export function StatisticHeader() {
     return (
         <div className='statistics-content-header'>
             <span className='statistics-header-title'>Ваша активность</span>
-            <div>
+            <div className='statistics-header-select-container'>
                 <div
                     onClick={() => setIsSelect(!isSelect)}
                     className='statistics-header-select'>

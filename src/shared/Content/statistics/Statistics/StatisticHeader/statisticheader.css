@@ -1,6 +1,7 @@
 .statistics-content-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 35px;
 }
 
 .statistics-header-title {
@@ -12,10 +13,16 @@
     color: #333333;
 }
 
+.statistics-header-select-container {
+    position: absolute;
+    right: 80px;
+    z-index: 5;
+}
+
 .statistics-header-select {
     width: 370px;
     height: 55px;
-    background: #F4F4F4;
+    background: #fafafa;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,7 +42,7 @@
 .statistics-header-dropdown {
     width: 370px;
     height: 55px;
-    background: #F4F4F4;
+    background: #fafafa;
     display: flex;
     align-items: center;
     padding: 0 15px;
