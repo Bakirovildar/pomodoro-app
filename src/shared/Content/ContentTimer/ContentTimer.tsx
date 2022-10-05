@@ -96,12 +96,13 @@ export function ContentTimer() {
                 <div className='timer-content-timer-container'>
                     <div className={isCounting ? 'timer-active' : 'timer'}>
                         <span>{minutes}: {seconds}</span>
-                        <div
+                        <button
                             className='timer-content-add'
+                            disabled={isCounting}
                             onClick={handleTimePlus}
                         >
                             <IconAddTime/>
-                        </div>
+                        </button>
                     </div>
                     <div className='timer-description'>
                         {
@@ -121,10 +122,11 @@ export function ContentTimer() {
                                             className='btn-start'
                                             onClick={handlePause}
                                         >Пауза</div>
-                                        : <div
+                                        : <button
                                             className='btn-start'
+                                            disabled={!task}
                                             onClick={handleStart}
-                                        >Старт</div>
+                                        >Старт</button>
                                 }
                                 {
                                     isCounting
@@ -133,11 +135,12 @@ export function ContentTimer() {
                                             onClick={handleStop}
                                         >Стоп
                                         </div>
-                                        : <div
+                                        : <button
                                             className='btn-stop'
+                                            disabled={!task}
                                             onClick={handleStop}
                                         >Стоп
-                                        </div>
+                                        </button>
                                 }
                             </div>
                             : <div className='timer-btns'>
