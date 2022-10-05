@@ -17,8 +17,8 @@ import {
 export type RootState = {
     descriptionAdd: Array<any>,
     tasks: any,
-    countWork: number,
-    dateWork: string
+    dateWork: any,
+    countWork: any
 }
 
 const initialState: RootState = {
@@ -33,8 +33,8 @@ const initialState: RootState = {
         }
     ],
     tasks: [],
-    countWork: 0,
-    dateWork: ''
+    dateWork: [],
+    countWork: 0
 }
 
 type MyAction = Tasks
@@ -85,15 +85,14 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                     if (i.id === action.id) {
                         i.valueTask = action.value
                     }
-
                     return i
                 })
             }
         case COUNTWORK:
             return {
                 ...state,
-                countWork: action.time,
-                dateWork: action.date
+                dateWork: [...state.dateWork, {countWork: action.time, dateWork: action.date}],
+                countWork: state.countWork + action.time
             }
         default:
             return state
