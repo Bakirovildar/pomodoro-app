@@ -62,3 +62,16 @@ export const editValueTask: ActionCreator<EditValueAction> = (value, id) => ({
     id
 })
 
+export const COUNTWORK = 'COUNTWORK'
+
+export type CountWorkAction = {
+    type: typeof COUNTWORK
+    time: any
+    date: any
+}
+
+export const countWork: ActionCreator<CountWorkAction> = (time, date) => ({
+    type: COUNTWORK,
+    time,
+    date
+})

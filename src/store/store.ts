@@ -4,15 +4,21 @@ import {
     AddMinusCountTime,
     ADDMINUSCOUNTTIME,
     ADDPLUSCOUNTTIME,
+    COUNTWORK,
+    CountWorkAction,
     DELETETASK,
-    DeleteTask, EditValueAction, EDITVALUETASK,
+    DeleteTask,
+    EditValueAction,
+    EDITVALUETASK,
     Tasks,
     TASKS
 } from "./action";
 
 export type RootState = {
     descriptionAdd: Array<any>,
-    tasks: any
+    tasks: any,
+    countWork: number,
+    dateWork: string
 }
 
 const initialState: RootState = {
@@ -26,7 +32,9 @@ const initialState: RootState = {
             title: 'Продолжайте работать «помидор» за «помидором», пока задача не будут выполнена.     Каждые 4 «помидора» делайте длинный перерыв (15-30 минут).'
         }
     ],
-    tasks: []
+    tasks: [],
+    countWork: 0,
+    dateWork: ''
 }
 
 type MyAction = Tasks
@@ -34,6 +42,7 @@ type MyAction = Tasks
     | AddCountTime
     | AddMinusCountTime
     | EditValueAction
+    | CountWorkAction
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -79,6 +88,12 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
 
                     return i
                 })
+            }
+        case COUNTWORK:
+            return {
+                ...state,
+                countWork: action.time,
+                dateWork: action.date
             }
         default:
             return state
