@@ -34,7 +34,7 @@ const initialState: RootState = {
     ],
     tasks: [],
     dateWork: [],
-    countWork: 0
+    countWork: 30000
 }
 
 type MyAction = Tasks
