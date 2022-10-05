@@ -1,6 +1,7 @@
 import React from 'react';
 import './statisticcontent.css';
 import {IconPomodoro} from "../../../../../icons/IconPomodoro";
+import {StatisticGraphic} from "./StatisticGraphic";
 
 export function StatisticContent() {
     return (
@@ -24,9 +25,9 @@ export function StatisticContent() {
                         2 помидора
                     </div>
                 </div>
-
             </div>
 
+            <StatisticGraphic />
         </div>
     );
 }

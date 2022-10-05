@@ -1,0 +1,70 @@
+.statistic-graphic-content {
+    width: 100%;
+    height: 522px;
+    background: #F4F4F4;
+    margin: 0 0 32px 32px;
+    position: relative;
+}
+
+.statistic-graphic-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 51px;
+    padding-left: 79px;
+    background: #ECECEC;
+}
+
+.statistic-graphic-footer-content {
+    display: flex;
+    height: 100%;
+    padding-right: 190px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.notNowDay {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #999999;
+}
+
+.nowDay {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #DC3E22;
+}
+
+.statistic-graphic-line {
+    height: 90px;
+    border-bottom: 1px solid #333333;
+    opacity: 0.2;
+}
+
+.statistic-graphic-line-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.statistic-graphic-hours {
+    width: 120px;
+}
+
+.statistic-graphic-hours div {
+    padding: 78px 0 0 0;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+    text-align: left;
+    margin-left: 30px;
+}
