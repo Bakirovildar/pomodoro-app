@@ -1,0 +1,32 @@
+import React from 'react';
+import './statisticcontent.css';
+import {IconPomodoro} from "../../../../../icons/IconPomodoro";
+
+export function StatisticContent() {
+    return (
+        <div className='statistic-content'>
+
+            <div className='statistic-left'>
+                <div className='statistic-day'>
+                    <span>Понедельник</span>
+                    <div className='statistic-day-description'>
+                        Вы работали над задачами в течение
+                        <div> 51 минуты</div>
+                    </div>
+                </div>
+
+                <div className='statistic-pomodoro'>
+                    <div className='statistic-pomodoro-content'>
+                        <IconPomodoro size={80}/>
+                        <span>x2</span>
+                    </div>
+                    <div className='statistic-pomodoro-footer'>
+                        2 помидора
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    );
+}

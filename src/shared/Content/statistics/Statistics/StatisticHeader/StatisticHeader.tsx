@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './statisticheader.css';
-import {IconDown} from "../../../../icons/IconDown";
-import {IconUp} from "../../../../icons/IconUp";
+import {IconDown} from "../../../../../icons/IconDown";
+import {IconUp} from "../../../../../icons/IconUp";
 
 export function StatisticHeader() {
     const [isSelect, setIsSelect] = useState(false)

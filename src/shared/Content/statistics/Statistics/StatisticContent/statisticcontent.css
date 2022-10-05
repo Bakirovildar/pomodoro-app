@@ -1,0 +1,88 @@
+.statistic-content {
+    display: flex;
+    margin-top: 30px;
+}
+
+.statistic-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.statistic-day {
+    padding: 25px;
+    background: #F4F4F4;
+    width: 296px;
+    height: 260px;
+    text-align: left;
+}
+
+.statistic-day span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #333333;
+}
+
+.statistic-day-description {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #333333;
+}
+
+.statistic-day-description div {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #DC3E22;
+}
+
+.statistic-pomodoro {
+    width: 100%;
+    height: 179px;
+    background: #F4F4F4;
+    position: relative;
+    margin-top: 32px;
+}
+
+.statistic-pomodoro-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DC3E22;
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #FFFFFF;
+}
+
+.statistic-pomodoro-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 128px;
+    width: 100%;
+}
+
+.statistic-pomodoro-content span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    margin-left: 17px;
+    color: #999999;
+}

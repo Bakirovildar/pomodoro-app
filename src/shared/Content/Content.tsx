@@ -3,7 +3,7 @@ import './content.css'
 import {AddingTasks} from "./AddingTasks";
 import {ContentTimer} from "./ContentTimer";
 import {Routes, Route} from 'react-router-dom'
-import {Statistics} from "./statics/Static";
+import {Statistics} from "./statistics/Statistics";
 
 export function Content() {
     return (

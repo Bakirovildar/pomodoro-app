@@ -10,7 +10,7 @@ export function Header() {
           <div className='header'>
               <div className='header-description'>
                   <Link to={'/tasks'} className='header-description-flex'>
-                      <IconPomodoro />
+                      <IconPomodoro size={40}/>
                       <span>pomodoro_box</span>
                   </Link>
               </div>
