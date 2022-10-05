@@ -14,7 +14,7 @@ export function Header() {
                       <span>pomodoro_box</span>
                   </Link>
               </div>
-              <Link to={'/stat'} className='header-static'>
+              <Link to={'stat'} className='header-static'>
                   <IconStatic />
                   <span>Статистика</span>
               </Link>

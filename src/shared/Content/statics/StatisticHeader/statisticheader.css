@@ -1,0 +1,53 @@
+.statistics-content-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistics-header-title {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #333333;
+}
+
+.statistics-header-select {
+    width: 370px;
+    height: 55px;
+    background: #F4F4F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.statistics-header-select span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: #333333;
+}
+
+.statistics-header-dropdown {
+    width: 370px;
+    height: 55px;
+    background: #F4F4F4;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    cursor: pointer;
+    border-top: 1px solid #DEDEDE;
+}
+
+.statistics-header-dropdown span {
+    font-family: 'SF UI Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    color: #333333;
+}

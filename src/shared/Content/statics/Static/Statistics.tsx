@@ -1,8 +1,11 @@
 import React from 'react';
-import styles from './statistics.css';
+import './statistics.css';
+import {StatisticHeader} from "../StatisticHeader/StatisticHeader";
 
 export function Statistics() {
   return (
-      <div>static</div>
+      <div className='statistics-content-container'>
+          <StatisticHeader/>
+      </div>
   );
 }
