@@ -32,13 +32,23 @@ export function StatisticGraphic() {
                   <div>25 мин</div>
               </div>
           </div>
+
           <div className='statistic-graphic-footer'>
               <div className='statistic-graphic-footer-content'>
                   {
                       days.map((i, idx) => <span className={nowDay === i.name ? 'nowDay' : 'notNowDay'} key={idx}>{i.title}</span>)
                   }
               </div>
+          </div>
 
+          <div className='statistic-graphic-graph'>
+              <span className='statistic-graphic-graph-span'>d</span>
+              <span className='statistic-graphic-graph-nowDay'>d</span>
+              <span className='statistic-graphic-graph-span'>d</span>
+              <span className='statistic-graphic-graph-span'>d</span>
+              <span className='statistic-graphic-graph-span'>d</span>
+              <span className='statistic-graphic-graph-noStat'></span>
+              <span className='statistic-graphic-graph-noStat'></span>
           </div>
 
       </div>

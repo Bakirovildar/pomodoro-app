@@ -68,3 +68,33 @@
     text-align: left;
     margin-left: 30px;
 }
+
+.statistic-graphic-graph {
+    position: absolute;
+    padding-left: 79px;
+    bottom: 51px;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding-right: 190px;
+    align-items: end;
+    justify-content: space-around;
+}
+
+.statistic-graphic-graph-span {
+    height: 122px;
+    width: 77px;
+    background: #EA8A79;
+}
+
+.statistic-graphic-graph-nowDay {
+    background: #DC3E22;
+    height: 192px;
+    width: 77px;
+}
+
+.statistic-graphic-graph-noStat {
+    background: #C4C4C4;
+    height: 5px;
+    width: 77px;
+}
