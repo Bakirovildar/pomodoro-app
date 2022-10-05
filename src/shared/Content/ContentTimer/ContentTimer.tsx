@@ -8,6 +8,7 @@ import {addPlusCountTime} from "../../../store/action";
 
 export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(20 * 60)
+    const [timeWork, setTimeWork] = useState(0)
     const [isCounting, setIsCounting] = useState(false)
     const [isPause, setIsPause] = useState(false)
     const [task, setTask]: any = useState(null)
@@ -28,16 +29,19 @@ export function ContentTimer() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            isCounting &&
-            setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+            isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
         }, 1000)
         if (timeLeft === 0) {
             setIsCounting(false)
         }
+
+        if (!task) return
+        setTimeWork(task.time * 60 - timeLeft)
+
         return () => {
             clearInterval(interval)
         }
-    }, [isCounting, tasks, task])
+    }, [isCounting, tasks, task, isPause])
 
     const handleStart = () => {
         setIsCounting(true)
@@ -50,14 +54,21 @@ export function ContentTimer() {
     }
 
     const handleStop = () => {
-        setTimeLeft(task.time * 60)
+        setTimeout(() => {
+            setTimeLeft(task.time * 60)
+        }, 200)
         setIsCounting(false)
+        setIsPause(true)
     }
 
     const handleTimePlus = () => {
         if (task.id) {
             dispatch(addPlusCountTime(task.id))
         }
+    }
+
+    const handleMade = () => {
+        console.log('s')
     }
 
     const styleTime = () => {
@@ -137,6 +148,7 @@ export function ContentTimer() {
 
                                 <div
                                     className='btn-end'
+                                    onClick={handleMade}
                                 >Сделано
                                 </div>
                             </div>

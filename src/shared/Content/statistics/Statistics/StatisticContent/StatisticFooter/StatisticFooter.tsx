@@ -17,7 +17,7 @@ export function StatisticFooter() {
             <div style={{marginRight: '32px'}}/>
             <div className='statistic-footer-card-2'>
                 <div className='statistic-footer-card-left'>
-                    <span>Фокус</span>
+                    <span>Время на паузе</span>
                     <div>9м</div>
                 </div>
                 <IconTimePause/>
@@ -25,7 +25,7 @@ export function StatisticFooter() {
             <div style={{marginRight: '32px'}}/>
             <div className='statistic-footer-card-3'>
                 <div className='statistic-footer-card-left'>
-                    <span>Фокус</span>
+                    <span>Остановки</span>
                     <div>3</div>
                 </div>
                 <IconStopTime/>

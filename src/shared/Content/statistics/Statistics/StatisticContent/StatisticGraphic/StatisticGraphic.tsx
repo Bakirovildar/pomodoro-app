@@ -42,13 +42,13 @@ export function StatisticGraphic() {
           </div>
 
           <div className='statistic-graphic-graph'>
-              <span className='statistic-graphic-graph-span'>d</span>
-              <span className='statistic-graphic-graph-nowDay'>d</span>
-              <span className='statistic-graphic-graph-span'>d</span>
-              <span className='statistic-graphic-graph-span'>d</span>
-              <span className='statistic-graphic-graph-span'>d</span>
-              <span className='statistic-graphic-graph-noStat'></span>
-              <span className='statistic-graphic-graph-noStat'></span>
+              <span className='statistic-graphic-graph-span'/>
+              <span className='statistic-graphic-graph-nowDay'/>
+              <span className='statistic-graphic-graph-span'/>
+              <span className='statistic-graphic-graph-span'/>
+              <span className='statistic-graphic-graph-span'/>
+              <span className='statistic-graphic-graph-noStat'/>
+              <span className='statistic-graphic-graph-noStat'/>
           </div>
 
       </div>
