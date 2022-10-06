@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './statisticgraphic.css';
 import {useSelector} from "react-redux";
 import {RootState} from "../../../../../../store/store";
@@ -18,8 +18,6 @@ export function StatisticGraphic() {
     const twoHours = Math.floor(quarter * 2 / 60)
     const threeHours = Math.floor(quarter * 3 / 60)
     const fourHours = Math.floor(quarter * 4 / 60)
-
-    console.log(quarter * 3)
 
     const days = [
         {name: 1, title: 'Пн'},
@@ -48,12 +46,14 @@ export function StatisticGraphic() {
                     {
                         fourHours * 60 < 60
                             ? <div>{Math.floor(fourMinutes)} мин</div>
-                            : fourHours === 0 ? <div>{0} ч</div> : <div>{fourHours} ч {Math.floor(fourMinutes)} мин</div>
+                            : fourHours === 0 ? <div>{0} ч</div> :
+                            <div>{fourHours} ч {Math.floor(fourMinutes)} мин</div>
                     }
                     {
                         threeHours * 60 < 60
                             ? <div>{Math.floor(threeMinutes)} мин</div>
-                            : threeHours === 0 ? <div>{0} ч</div> : <div>{threeHours} ч {Math.floor(threeMinutes)} мин</div>
+                            : threeHours === 0 ? <div>{0} ч</div> :
+                            <div>{threeHours} ч {Math.floor(threeMinutes)} мин</div>
                     }
                     {
                         twoHours * 60 < 60

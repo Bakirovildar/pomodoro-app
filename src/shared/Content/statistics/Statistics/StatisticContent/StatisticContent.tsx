@@ -14,7 +14,6 @@ export function StatisticContent() {
                         <span>Понедельник</span>
                         <div className='statistic-day-description'>
                             Вы работали над задачами в течение
-                            <div> 51 минуты</div>
                         </div>
                     </div>
 

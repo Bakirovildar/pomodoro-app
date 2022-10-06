@@ -33,7 +33,7 @@ const initialState: RootState = {
         }
     ],
     tasks: [],
-    dateWork: [],
+    dateWork: [{countWork: 22332, dateWork: '06.10.2022'}],
     countWork: 30000
 }
 
