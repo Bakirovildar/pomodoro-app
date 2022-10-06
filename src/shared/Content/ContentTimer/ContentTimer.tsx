@@ -68,7 +68,9 @@ export function ContentTimer() {
     }
 
     const handleMade = () => {
-        dispatch(countWork(timeWork, new Date().toLocaleDateString()))
+        const date = new Date()
+        const result = new Date(date)
+        dispatch(countWork(timeWork, new Date(result.setDate(result.getDate()))))
         dispatch(deleteTaskAction(task.id))
     }
 

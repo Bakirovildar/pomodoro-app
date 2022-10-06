@@ -33,8 +33,16 @@ const initialState: RootState = {
         }
     ],
     tasks: [],
-    dateWork: [{countWork: 22332, dateWork: '06.10.2022'}],
-    countWork: 30000
+    dateWork: [
+        {countWork: 22332, dateWork: 'Mon, 03 Oct 2022 05:50:44 GMT'},
+        {countWork: 20000, dateWork: 'Tue, 04 Oct 2022 05:50:44 GMT'},
+        {countWork: 22333, dateWork: 'Wed, 05 Oct 2022 05:50:44 GMT'},
+        {countWork: 12332, dateWork: 'Thu, 06 Oct 2022 05:50:44 GMT'},
+        {countWork: 12332, dateWork: 'Fri, 07 Oct 2022 05:50:44 GMT'},
+        {countWork: 12332, dateWork: 'Sat, 08 Oct 2022 05:50:44 GMT'},
+        {countWork: 12332, dateWork: 'Sun, 09 Oct 2022 05:50:44 GMT'},
+    ],
+    countWork: 76997
 }
 
 type MyAction = Tasks

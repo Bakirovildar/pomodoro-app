@@ -1,11 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './statisticgraphic.css';
 import {useSelector} from "react-redux";
 import {RootState} from "../../../../../../store/store";
 import {getTimes} from "../../../../../../helpers/getTimes";
+import {addDays} from "../../../../../../helpers/addDays";
 
 export function StatisticGraphic() {
     const secondsWork: any = useSelector<RootState>(state => state.countWork)
+    const workDays = useSelector<RootState>(state => state.dateWork)
+    const dateTasks: any = useSelector<RootState>(state => state.dateWork)
+
+    const [twoWeeks, setTwoWeeks]: Array<any> = useState([])
+    const [tasksDate, setTasksDate] : Array<any> = useState([])
+
+    useEffect(() => {
+
+        const arr = []
+        for (let i = 0; i < 21; i++) {
+            const days =new Date(addDays(i)).toString().slice(0,15)
+            arr.push(days)
+        }
+        const tasksDateArr: any = []
+        dateTasks.map((i:any) => tasksDateArr.push({date: new Date(i.dateWork).toString().slice(0,15), time: i.countWork}))
+        setTasksDate(tasksDateArr)
+        setTwoWeeks(arr)
+    }, [])
 
     const minutes = secondsWork / 60
     const quarter = minutes / 4
