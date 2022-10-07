@@ -34,13 +34,14 @@ const initialState: RootState = {
     ],
     tasks: [],
     dateWork: [
-        {countWork: 22332, dateWork: 'Mon, 03 Oct 2022 05:50:44 GMT'},
-        {countWork: 20000, dateWork: 'Tue, 04 Oct 2022 05:50:44 GMT'},
-        {countWork: 22333, dateWork: 'Wed, 05 Oct 2022 05:50:44 GMT'},
-        {countWork: 12332, dateWork: 'Thu, 06 Oct 2022 05:50:44 GMT'},
-        {countWork: 12332, dateWork: 'Fri, 07 Oct 2022 05:50:44 GMT'},
-        {countWork: 12332, dateWork: 'Sat, 08 Oct 2022 05:50:44 GMT'},
-        {countWork: 12332, dateWork: 'Sun, 09 Oct 2022 05:50:44 GMT'},
+        {countWork: 2222, dateWork: 'Mon Oct 03 2022'},
+        {countWork: 233, dateWork: 'Tue Oct 04 2022'},
+        {countWork: 552, dateWork: 'Wed Oct 05 2022'},
+        {countWork: 236, dateWork: 'Thu Oct 06 2022'},
+        {countWork: 2311, dateWork: 'Thu Oct 06 2022'},
+        {countWork: 2333, dateWork: 'Fri Oct 07 2022'},
+        {countWork: 2333, dateWork: 'Fri Oct 14 2022'},
+        {countWork: 2333, dateWork: 'Fri Oct 21 2022'},
     ],
     countWork: 76997
 }
@@ -99,7 +100,7 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
         case COUNTWORK:
             return {
                 ...state,
-                dateWork: [...state.dateWork, {countWork: action.time, dateWork: action.date}],
+                dateWork: [...state.dateWork, {countWork: action.time, dateWork: new Date(action.date).toString().slice(0, 15)}],
                 countWork: state.countWork + action.time
             }
         default:

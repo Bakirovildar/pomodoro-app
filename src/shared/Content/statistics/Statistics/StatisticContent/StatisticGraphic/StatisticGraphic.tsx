@@ -3,28 +3,89 @@ import './statisticgraphic.css';
 import {useSelector} from "react-redux";
 import {RootState} from "../../../../../../store/store";
 import {getTimes} from "../../../../../../helpers/getTimes";
-import {addDays} from "../../../../../../helpers/addDays";
 
 export function StatisticGraphic() {
     const secondsWork: any = useSelector<RootState>(state => state.countWork)
-    const workDays = useSelector<RootState>(state => state.dateWork)
     const dateTasks: any = useSelector<RootState>(state => state.dateWork)
+    const [numWeeks, setNumWeeks] = useState(1)
 
-    const [twoWeeks, setTwoWeeks]: Array<any> = useState([])
-    const [tasksDate, setTasksDate] : Array<any> = useState([])
+    const [monday, setMonday] = useState(0)
+    const [tuesday, setTuesday] = useState(0)
+    const [wednesday, setWednesday] = useState(0)
+    const [thursday, setThursday] = useState(0)
+    const [friday, setFriday] = useState(0)
+    const [saturday, setSaturday] = useState(0)
+    const [sunday, setSunday] = useState(0)
+
+    const [maxTime, setMaxTime] = useState(0)
 
     useEffect(() => {
+        let dateWeeks: any = ''
 
-        const arr = []
-        for (let i = 0; i < 21; i++) {
-            const days =new Date(addDays(i)).toString().slice(0,15)
-            arr.push(days)
+        if (numWeeks === 1) {
+            dateWeeks = localStorage.getItem('dateFirst')
+        } else if (numWeeks === 2) {
+            dateWeeks = localStorage.getItem('dateTwo')
+        } else if (numWeeks === 3) {
+            dateWeeks = localStorage.getItem('dateThree')
         }
-        const tasksDateArr: any = []
-        dateTasks.map((i:any) => tasksDateArr.push({date: new Date(i.dateWork).toString().slice(0,15), time: i.countWork}))
-        setTasksDate(tasksDateArr)
-        setTwoWeeks(arr)
-    }, [])
+
+        const arr = dateWeeks.split(',')
+
+        const filteredArr: any = []
+        dateTasks.map((i: any) => {
+            arr.forEach((q: any) => {
+                if (q === i.dateWork) {
+                    filteredArr.push(i)
+                }
+            })
+        })
+
+        let countMonday:any = 0
+        let countTuesday:any = 0
+        let countWednesday:any = 0
+        let countThursday:any = 0
+        let countFriday:any = 0
+        let countSaturday:any = 0
+        let countSunday:any = 0
+
+        const arrMax:any = []
+
+        filteredArr.forEach((i:any) => {
+            if (i.dateWork.includes('Mon')) {
+                countMonday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Tue')) {
+                countTuesday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Wed')) {
+                countWednesday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Thu')) {
+                countThursday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Fri')) {
+                countFriday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Sat')) {
+                countSaturday += i.countWork
+                arrMax.push(i.countWork)
+            } else if (i.dateWork.includes('Sun')) {
+                countSunday += i.countWork
+                arrMax.push(i.countWork)
+            }
+        })
+
+        setMaxTime(Math.max(...arrMax))
+
+        setMonday(countMonday)
+        setTuesday(countTuesday)
+        setWednesday(countWednesday)
+        setThursday(countThursday)
+        setFriday(countFriday)
+        setSaturday(countSaturday)
+        setSunday(countSunday)
+    }, [dateTasks, numWeeks])
 
     const minutes = secondsWork / 60
     const quarter = minutes / 4
@@ -39,13 +100,13 @@ export function StatisticGraphic() {
     const fourHours = Math.floor(quarter * 4 / 60)
 
     const days = [
-        {name: 1, title: 'Пн'},
-        {name: 2, title: 'Вт'},
-        {name: 3, title: 'Ср'},
-        {name: 4, title: 'Чт'},
-        {name: 5, title: 'Пт'},
-        {name: 6, title: 'Сб'},
-        {name: 7, title: 'Вс'},
+        {name: 1, title: 'Пн', eng: 'Mon'},
+        {name: 2, title: 'Вт', eng: 'Tue'},
+        {name: 3, title: 'Ср', eng: 'Wed'},
+        {name: 4, title: 'Чт', eng: 'Thu'},
+        {name: 5, title: 'Пт', eng: 'Fri'},
+        {name: 6, title: 'Сб', eng: 'Sat'},
+        {name: 7, title: 'Вс', eng: 'Sun'},
     ]
 
     const nowDay = new Date().getDay()
@@ -97,13 +158,35 @@ export function StatisticGraphic() {
             </div>
 
             <div className='statistic-graphic-graph'>
-                <span className='statistic-graphic-graph-span'/>
-                <span className='statistic-graphic-graph-nowDay'/>
-                <span className='statistic-graphic-graph-span'/>
-                <span className='statistic-graphic-graph-span'/>
-                <span className='statistic-graphic-graph-span'/>
-                <span className='statistic-graphic-graph-noStat'/>
-                <span className='statistic-graphic-graph-noStat'/>
+                {
+                    monday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${monday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    tuesday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${tuesday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    wednesday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${wednesday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    thursday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${thursday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    friday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${friday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    saturday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${saturday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }{
+                    sunday
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${sunday * 400 / maxTime}px`}}/>
+                        : <span className='statistic-graphic-graph-noStat'/>
+                }
             </div>
 
         </div>
