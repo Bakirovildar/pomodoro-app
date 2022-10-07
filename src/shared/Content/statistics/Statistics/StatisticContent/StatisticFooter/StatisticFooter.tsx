@@ -9,13 +9,14 @@ import {RootState} from "../../../../../../store/store";
 export function StatisticFooter() {
     const countStop: any = useSelector<RootState>(state => state.countStop)
     const countPause: any = useSelector<RootState>(state => state.countPause)
+    const countWork: any = useSelector<RootState>(state => state.countWork)
 
     return (
         <div className='statistic-footer'>
             <div className='statistic-footer-card'>
                 <div className='statistic-footer-card-left'>
                     <span>Фокус</span>
-                    <div>35%</div>
+                    <div>{Math.floor(12 * 100 / countWork)}%</div>
                 </div>
                 <IconFocus/>
             </div>
