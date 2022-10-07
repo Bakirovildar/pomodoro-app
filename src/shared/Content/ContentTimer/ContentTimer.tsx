@@ -83,6 +83,8 @@ export function ContentTimer() {
     const handleMade = () => {
         const date = new Date()
         const result = new Date(date)
+        setIsCounting(false)
+        setIsPause(false)
         dispatch(countWork(timeWork, new Date(result.setDate(result.getDate()))))
         dispatch(deleteTaskAction(task.id))
         dispatch(countPomodoro())
