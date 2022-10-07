@@ -8,6 +8,8 @@ import {
     CountWorkAction,
     DELETETASK,
     DeleteTask,
+    DROPDOWNNUMBER,
+    DropdownNumberAction,
     EditValueAction,
     EDITVALUETASK,
     Tasks,
@@ -18,7 +20,8 @@ export type RootState = {
     descriptionAdd: Array<any>,
     tasks: any,
     dateWork: any,
-    countWork: any
+    countWork: any,
+    dropdownNumber: number
 }
 
 const initialState: RootState = {
@@ -43,7 +46,8 @@ const initialState: RootState = {
         {countWork: 2333, dateWork: 'Fri Oct 14 2022'},
         {countWork: 2333, dateWork: 'Fri Oct 21 2022'},
     ],
-    countWork: 76997
+    countWork: 76997,
+    dropdownNumber: 0
 }
 
 type MyAction = Tasks
@@ -52,6 +56,7 @@ type MyAction = Tasks
     | AddMinusCountTime
     | EditValueAction
     | CountWorkAction
+    | DropdownNumberAction
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -102,6 +107,11 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                 ...state,
                 dateWork: [...state.dateWork, {countWork: action.time, dateWork: new Date(action.date).toString().slice(0, 15)}],
                 countWork: state.countWork + action.time
+            }
+        case DROPDOWNNUMBER:
+            return {
+                ...state,
+                dropdownNumber: action.number
             }
         default:
             return state

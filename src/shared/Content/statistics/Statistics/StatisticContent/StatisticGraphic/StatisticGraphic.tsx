@@ -7,7 +7,9 @@ import {getTimes} from "../../../../../../helpers/getTimes";
 export function StatisticGraphic() {
     const secondsWork: any = useSelector<RootState>(state => state.countWork)
     const dateTasks: any = useSelector<RootState>(state => state.dateWork)
-    const [numWeeks, setNumWeeks] = useState(1)
+    const dropdownNumber: any = useSelector<RootState>(state => state.dropdownNumber)
+
+    const [numWeeks, setNumWeeks] = useState(0)
 
     const [monday, setMonday] = useState(0)
     const [tuesday, setTuesday] = useState(0)
@@ -22,11 +24,11 @@ export function StatisticGraphic() {
     useEffect(() => {
         let dateWeeks: any = ''
 
-        if (numWeeks === 1) {
+        if (numWeeks === 0) {
             dateWeeks = localStorage.getItem('dateFirst')
-        } else if (numWeeks === 2) {
+        } else if (numWeeks === 1) {
             dateWeeks = localStorage.getItem('dateTwo')
-        } else if (numWeeks === 3) {
+        } else if (numWeeks === 2) {
             dateWeeks = localStorage.getItem('dateThree')
         }
 
@@ -85,7 +87,8 @@ export function StatisticGraphic() {
         setFriday(countFriday)
         setSaturday(countSaturday)
         setSunday(countSunday)
-    }, [dateTasks, numWeeks])
+        setNumWeeks(dropdownNumber)
+    }, [dateTasks, numWeeks, dropdownNumber])
 
     const minutes = secondsWork / 60
     const quarter = minutes / 4

@@ -75,3 +75,15 @@ export const countWork: ActionCreator<CountWorkAction> = (time, date) => ({
     time,
     date
 })
+
+export const DROPDOWNNUMBER = 'DROPDOWNNUMBER'
+
+export type DropdownNumberAction = {
+    type: typeof DROPDOWNNUMBER
+    number: number
+}
+
+export const dropdownNumber: ActionCreator<DropdownNumberAction> = (number) => ({
+    type: DROPDOWNNUMBER,
+    number
+})
