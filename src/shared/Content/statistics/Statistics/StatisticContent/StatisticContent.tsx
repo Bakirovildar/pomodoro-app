@@ -3,8 +3,12 @@ import './statisticcontent.css';
 import {IconPomodoro} from "../../../../../icons/IconPomodoro";
 import {StatisticGraphic} from "./StatisticGraphic";
 import {StatisticFooter} from "./StatisticFooter";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../../../store/store";
 
 export function StatisticContent() {
+    const countPomodoro: any = useSelector<RootState>(state => state.countPomodoro)
+
     return (
         <>
             <div className='statistic-content'>
@@ -20,10 +24,10 @@ export function StatisticContent() {
                     <div className='statistic-pomodoro'>
                         <div className='statistic-pomodoro-content'>
                             <IconPomodoro size={80}/>
-                            <span>x2</span>
+                            <span>x{countPomodoro}</span>
                         </div>
                         <div className='statistic-pomodoro-footer'>
-                            2 помидора
+                            {countPomodoro} помидора
                         </div>
                     </div>
                 </div>

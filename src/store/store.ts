@@ -4,6 +4,8 @@ import {
     AddMinusCountTime,
     ADDMINUSCOUNTTIME,
     ADDPLUSCOUNTTIME,
+    COUNTPOMODORO,
+    CountPomodoroAction, COUNTSTOP, CountStopAction,
     COUNTWORK,
     CountWorkAction,
     DELETETASK,
@@ -21,7 +23,9 @@ export type RootState = {
     tasks: any,
     dateWork: any,
     countWork: any,
-    dropdownNumber: number
+    dropdownNumber: number,
+    countPomodoro: number,
+    countStop: number
 }
 
 const initialState: RootState = {
@@ -39,7 +43,9 @@ const initialState: RootState = {
     dateWork: [
     ],
     countWork: 0,
-    dropdownNumber: 0
+    dropdownNumber: 0,
+    countPomodoro: 0,
+    countStop: 0
 }
 
 type MyAction = Tasks
@@ -49,6 +55,8 @@ type MyAction = Tasks
     | EditValueAction
     | CountWorkAction
     | DropdownNumberAction
+    | CountPomodoroAction
+    | CountStopAction
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -104,6 +112,16 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
             return {
                 ...state,
                 dropdownNumber: action.number
+            }
+        case COUNTPOMODORO:
+            return {
+                ...state,
+                countPomodoro: state.countPomodoro + 1
+            }
+        case COUNTSTOP:
+            return {
+                ...state,
+                countStop: state.countStop + 1
             }
         default:
             return state

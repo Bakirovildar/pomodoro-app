@@ -87,3 +87,23 @@ export const dropdownNumber: ActionCreator<DropdownNumberAction> = (number) => (
     type: DROPDOWNNUMBER,
     number
 })
+
+export const COUNTPOMODORO = 'COUNTPOMODORO'
+
+export type CountPomodoroAction = {
+    type: typeof COUNTPOMODORO
+}
+
+export const countPomodoro: ActionCreator<CountPomodoroAction> = () => ({
+    type: COUNTPOMODORO
+})
+
+export const COUNTSTOP = 'COUNTSTOP'
+
+export type CountStopAction = {
+    type: typeof COUNTSTOP
+}
+
+export const countStop: ActionCreator<CountStopAction> = () => ({
+    type: COUNTSTOP
+})

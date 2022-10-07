@@ -4,7 +4,7 @@ import {IconAddTime} from "../../../icons/IconAddTime";
 import {getPadTime} from "../../../helpers/getPadTime";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
-import {addPlusCountTime, countWork, deleteTaskAction} from "../../../store/action";
+import {addPlusCountTime, countPomodoro, countStop, countWork, deleteTaskAction} from "../../../store/action";
 
 export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(20 * 60)
@@ -54,11 +54,9 @@ export function ContentTimer() {
     }
 
     const handleStop = () => {
-        setTimeout(() => {
-            setTimeLeft(task.time * 60)
-        }, 200)
         setIsCounting(false)
         setIsPause(true)
+        dispatch(countStop())
     }
 
     const handleTimePlus = () => {
@@ -72,6 +70,7 @@ export function ContentTimer() {
         const result = new Date(date)
         dispatch(countWork(timeWork, new Date(result.setDate(result.getDate()))))
         dispatch(deleteTaskAction(task.id))
+        dispatch(countPomodoro())
     }
 
     const styleTime = () => {
