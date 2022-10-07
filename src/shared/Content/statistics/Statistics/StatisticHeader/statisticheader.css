@@ -50,6 +50,11 @@
     border-top: 1px solid #DEDEDE;
 }
 
+.statistics-header-dropdown:hover {
+    background: #EA8A79;
+    transition: 0.5s;
+}
+
 .statistics-header-dropdown span {
     font-family: 'SF UI Display';
     font-style: normal;
