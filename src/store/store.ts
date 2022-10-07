@@ -48,7 +48,7 @@ const initialState: RootState = {
     dateWork: [
     ],
     countWork: 0,
-    dropdownNumber: 0,
+    dropdownNumber: 1,
     countPomodoro: 0,
     countStop: 0,
     countPause: 0
@@ -133,7 +133,7 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
         case COUNTPAUSE:
             return {
                 ...state,
-                countPause: action.countPause
+                countPause: state.countPause + action.countPause
             }
         default:
             return state

@@ -8,6 +8,7 @@ import {RootState} from "../../../../../../store/store";
 
 export function StatisticFooter() {
     const countStop: any = useSelector<RootState>(state => state.countStop)
+    const countPause: any = useSelector<RootState>(state => state.countPause)
 
     return (
         <div className='statistic-footer'>
@@ -22,7 +23,7 @@ export function StatisticFooter() {
             <div className='statistic-footer-card-2'>
                 <div className='statistic-footer-card-left'>
                     <span>Время на паузе</span>
-                    <div>9м</div>
+                    <div>{Math.floor(countPause / 60)} м</div>
                 </div>
                 <IconTimePause/>
             </div>
