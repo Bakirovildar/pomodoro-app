@@ -107,3 +107,15 @@ export type CountStopAction = {
 export const countStop: ActionCreator<CountStopAction> = () => ({
     type: COUNTSTOP
 })
+
+export const COUNTPAUSE = 'COUNTPAUSE'
+
+export type CountPauseAction = {
+    type: typeof COUNTPAUSE
+    countPause: number
+}
+
+export const countPause: ActionCreator<CountPauseAction> = (countPause) => ({
+    type: COUNTPAUSE,
+    countPause
+})

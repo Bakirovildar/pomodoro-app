@@ -4,11 +4,19 @@ import {IconAddTime} from "../../../icons/IconAddTime";
 import {getPadTime} from "../../../helpers/getPadTime";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
-import {addPlusCountTime, countPomodoro, countStop, countWork, deleteTaskAction} from "../../../store/action";
+import {
+    addPlusCountTime,
+    countPause,
+    countPomodoro,
+    countStop,
+    countWork,
+    deleteTaskAction
+} from "../../../store/action";
 
 export function ContentTimer() {
     const [timeLeft, setTimeLeft] = useState(20 * 60)
     const [timeWork, setTimeWork] = useState(0)
+    const [timePause, setTimePause] = useState(0)
     const [isCounting, setIsCounting] = useState(false)
     const [isPause, setIsPause] = useState(false)
     const [task, setTask]: any = useState(null)
@@ -31,6 +39,12 @@ export function ContentTimer() {
         const interval = setInterval(() => {
             isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
         }, 1000)
+
+        const intervalPause = setInterval(() => {
+            isPause && setTimePause((timePause) => timePause + 1)
+        }, 1000)
+
+
         if (timeLeft === 0) {
             setIsCounting(false)
         }
@@ -40,6 +54,7 @@ export function ContentTimer() {
 
         return () => {
             clearInterval(interval)
+            clearInterval(intervalPause)
         }
     }, [isCounting, tasks, task, isPause])
 
@@ -71,6 +86,7 @@ export function ContentTimer() {
         dispatch(countWork(timeWork, new Date(result.setDate(result.getDate()))))
         dispatch(deleteTaskAction(task.id))
         dispatch(countPomodoro())
+        dispatch(countPause(timePause))
     }
 
     const styleTime = () => {
