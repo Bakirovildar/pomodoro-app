@@ -10,6 +10,7 @@ export function StatisticGraphic() {
     const dropdownNumber: any = useSelector<RootState>(state => state.dropdownNumber)
 
     const [numWeeks, setNumWeeks] = useState(0)
+    const [weeks, setWeeks] = useState([])
 
     const [monday, setMonday] = useState(0)
     const [tuesday, setTuesday] = useState(0)
@@ -24,11 +25,11 @@ export function StatisticGraphic() {
     useEffect(() => {
         let dateWeeks: any = ''
 
-        if (numWeeks === 0) {
+        if (numWeeks === 1) {
             dateWeeks = localStorage.getItem('dateFirst')
-        } else if (numWeeks === 1) {
-            dateWeeks = localStorage.getItem('dateTwo')
         } else if (numWeeks === 2) {
+            dateWeeks = localStorage.getItem('dateTwo')
+        } else if (numWeeks === 3) {
             dateWeeks = localStorage.getItem('dateThree')
         }
 
@@ -79,7 +80,7 @@ export function StatisticGraphic() {
         })
 
         setMaxTime(Math.max(...arrMax))
-
+        setWeeks(filteredArr)
         setMonday(countMonday)
         setTuesday(countTuesday)
         setWednesday(countWednesday)
@@ -127,26 +128,32 @@ export function StatisticGraphic() {
                 </div>
                 <div className='statistic-graphic-hours'>
                     {
-                        fourHours * 60 < 60
+                        weeks.length
+                        ? fourHours * 60 < 60
                             ? <div>{Math.floor(fourMinutes)} мин</div>
-                            : fourHours === 0 ? <div>{0} ч</div> :
-                            <div>{fourHours} ч {Math.floor(fourMinutes)} мин</div>
+                            : fourHours === 0 ? <div>{0} ч</div> : <div>{fourHours} ч {Math.floor(fourMinutes)} мин</div>
+                        : <div>{0} ч</div>
                     }
                     {
-                        threeHours * 60 < 60
-                            ? <div>{Math.floor(threeMinutes)} мин</div>
-                            : threeHours === 0 ? <div>{0} ч</div> :
-                            <div>{threeHours} ч {Math.floor(threeMinutes)} мин</div>
+                        weeks.length
+                        ? threeHours * 60 < 60
+                             ? <div>{Math.floor(threeMinutes)} мин</div>
+                             : threeHours === 0 ? <div>{0} ч</div> : <div>{threeHours} ч {Math.floor(threeMinutes)} мин</div>
+                        : <div>{0} ч</div>
                     }
                     {
-                        twoHours * 60 < 60
-                            ? <div>{Math.floor(twoMinutes)} мин</div>
-                            : twoHours === 0 ? <div>{0} ч</div> : <div>{twoHours} ч {Math.floor(twoMinutes)} мин</div>
+                        weeks.length
+                            ? twoHours * 60 < 60
+                                 ? <div>{Math.floor(twoMinutes)} мин</div>
+                                 : twoHours === 0 ? <div>{0} ч</div> : <div>{twoHours} ч {Math.floor(twoMinutes)} мин</div>
+                            : <div>{0} ч</div>
                     }
                     {
-                        oneHours * 60 < 60
-                            ? <div>{Math.floor(oneMinutes)} мин</div>
-                            : oneHours === 0 ? <div>{0} ч</div> : <div>{oneHours} ч {oneMinutes} мин</div>
+                        weeks.length
+                            ? oneHours * 60 < 60
+                                 ? <div>{Math.floor(oneMinutes)} мин</div>
+                                 : oneHours === 0 ? <div>{0} ч</div> : <div>{oneHours} ч {oneMinutes} мин</div>
+                            : <div>{0} ч</div>
                     }
                 </div>
             </div>

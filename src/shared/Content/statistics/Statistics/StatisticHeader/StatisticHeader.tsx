@@ -1,19 +1,31 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './statisticheader.css';
 import {IconDown} from "../../../../../icons/IconDown";
 import {IconUp} from "../../../../../icons/IconUp";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {dropdownNumber} from "../../../../../store/action";
+import {RootState} from "../../../../../store/store";
 
 export function StatisticHeader() {
+    const numberDropdown: any = useSelector<RootState>(state => state.dropdownNumber)
     const [isSelect, setIsSelect] = useState(false)
+    const [title, setTitle] = useState('Эта неделя')
 
     const dispatch = useDispatch()
 
-    const arr = ['Прошедшая неделя', 'Две недели назад']
+    useEffect(() => {
+        setTitle(arr[numberDropdown - 1])
+    }, [])
+
+    const arr = ['Эта неделя','Прошедшая неделя', 'Две недели назад']
 
     const handleClickDropdown = (idx: number) => {
         dispatch(dropdownNumber(idx))
+        setTitle(arr[idx-1])
+        setIsSelect(!isSelect)
+    }
+
+    const handleClickSelect = () => {
         setIsSelect(!isSelect)
     }
 
@@ -22,9 +34,9 @@ export function StatisticHeader() {
             <span className='statistics-header-title'>Ваша активность</span>
             <div className='statistics-header-select-container'>
                 <div
-                    onClick={() => handleClickDropdown(0)}
+                    onClick={handleClickSelect}
                     className='statistics-header-select'>
-                    <span>Эта неделя</span>
+                    <span>{title}</span>
                     {
                         isSelect
                             ? <IconUp/>
