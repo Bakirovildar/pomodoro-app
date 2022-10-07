@@ -47,7 +47,7 @@ const initialState: RootState = {
     tasks: [],
     dateWork: [
     ],
-    countWork: 0,
+    countWork: 33552,
     dropdownNumber: 1,
     countPomodoro: 0,
     countStop: 0,

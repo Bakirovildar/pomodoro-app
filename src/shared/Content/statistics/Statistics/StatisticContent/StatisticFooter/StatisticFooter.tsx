@@ -16,7 +16,7 @@ export function StatisticFooter() {
             <div className='statistic-footer-card'>
                 <div className='statistic-footer-card-left'>
                     <span>Фокус</span>
-                    <div>{Math.floor(12 * 100 / countWork)}%</div>
+                    <div>{Math.floor(countWork / 12)}%</div>
                 </div>
                 <IconFocus/>
             </div>
