@@ -52,34 +52,26 @@ export function StatisticGraphic() {
         let countSaturday:any = 0
         let countSunday:any = 0
 
-        const arrMax:any = []
-
         filteredArr.forEach((i:any) => {
             if (i.dateWork.includes('Mon')) {
                 countMonday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Tue')) {
                 countTuesday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Wed')) {
                 countWednesday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Thu')) {
                 countThursday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Fri')) {
                 countFriday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Sat')) {
                 countSaturday += i.countWork
-                arrMax.push(i.countWork)
             } else if (i.dateWork.includes('Sun')) {
                 countSunday += i.countWork
-                arrMax.push(i.countWork)
             }
         })
 
-        setMaxTime(Math.max(...arrMax))
+        setMaxTime( Math.max(countMonday, countTuesday,countWednesday, countThursday, countFriday, countSaturday, countSunday))
+
         setWeeks(filteredArr)
         setMonday(countMonday)
         setTuesday(countTuesday)
@@ -170,31 +162,31 @@ export function StatisticGraphic() {
             <div className='statistic-graphic-graph'>
                 {
                     monday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${monday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${monday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     tuesday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${tuesday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${tuesday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     wednesday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${wednesday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${wednesday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     thursday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${thursday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${thursday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     friday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${friday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${friday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     saturday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${saturday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${saturday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }{
                     sunday
-                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${sunday * 400 / maxTime}px`}}/>
+                        ? <span className='statistic-graphic-graph-span' style={{width: '77px', background: '#EA8A79',height: `${sunday * 100 / maxTime}%`}}/>
                         : <span className='statistic-graphic-graph-noStat'/>
                 }
             </div>

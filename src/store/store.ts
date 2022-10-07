@@ -37,16 +37,8 @@ const initialState: RootState = {
     ],
     tasks: [],
     dateWork: [
-        {countWork: 2222, dateWork: 'Mon Oct 03 2022'},
-        {countWork: 233, dateWork: 'Tue Oct 04 2022'},
-        {countWork: 552, dateWork: 'Wed Oct 05 2022'},
-        {countWork: 236, dateWork: 'Thu Oct 06 2022'},
-        {countWork: 2311, dateWork: 'Thu Oct 06 2022'},
-        {countWork: 2333, dateWork: 'Fri Oct 07 2022'},
-        {countWork: 2333, dateWork: 'Fri Oct 14 2022'},
-        {countWork: 2333, dateWork: 'Fri Oct 21 2022'},
     ],
-    countWork: 76997,
+    countWork: 0,
     dropdownNumber: 0
 }
 

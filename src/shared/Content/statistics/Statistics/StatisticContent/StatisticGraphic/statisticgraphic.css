@@ -75,6 +75,7 @@
     bottom: 51px;
     left: 0;
     right: 0;
+    height: 450px;
     display: flex;
     padding-right: 190px;
     align-items: end;

@@ -15,7 +15,7 @@ export function StatisticHeader() {
 
     useEffect(() => {
         setTitle(arr[numberDropdown - 1])
-    }, [])
+    }, [numberDropdown])
 
     const arr = ['Эта неделя','Прошедшая неделя', 'Две недели назад']
 
