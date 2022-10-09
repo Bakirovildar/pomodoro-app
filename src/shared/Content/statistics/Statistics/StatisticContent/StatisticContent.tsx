@@ -39,8 +39,8 @@ export function StatisticContent() {
                             Вы работали над задачами в течение
                             {
                                 timeTask < 60
-                                    ? <div>{timeTask} мин</div>
-                                    : minutesTime === 0 ? <div>{hoursTime} ч</div> : <div>{hoursTime} ч {!minutesTime ? 0 : minutesTime} мин</div>
+                                    ? <div>0 мин</div>
+                                    : minutesTime === 0 ? <div>{hoursTime} ч</div> : <div>{hoursTime < 1 ? '' : `${hoursTime} ч`} {!minutesTime ? 0 : minutesTime} мин</div>
                             }
                         </div>
                     </div>
