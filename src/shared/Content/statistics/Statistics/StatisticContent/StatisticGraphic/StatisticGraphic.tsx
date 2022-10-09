@@ -25,11 +25,11 @@ export function StatisticGraphic() {
     useEffect(() => {
         let dateWeeks: any = ''
 
-        if (numWeeks === 1) {
+        if (numWeeks === 0) {
             dateWeeks = localStorage.getItem('dateFirst')
-        } else if (numWeeks === 2) {
+        } else if (numWeeks === 1) {
             dateWeeks = localStorage.getItem('dateTwo')
-        } else if (numWeeks === 3) {
+        } else if (numWeeks === 2) {
             dateWeeks = localStorage.getItem('dateThree')
         }
 
