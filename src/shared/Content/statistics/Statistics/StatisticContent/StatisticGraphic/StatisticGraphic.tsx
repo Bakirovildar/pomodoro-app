@@ -102,7 +102,7 @@ export function StatisticGraphic() {
         {name: 4, title: 'Чт', eng: 'Thu'},
         {name: 5, title: 'Пт', eng: 'Fri'},
         {name: 6, title: 'Сб', eng: 'Sat'},
-        {name: 7, title: 'Вс', eng: 'Sun'},
+        {name: 0, title: 'Вс', eng: 'Sun'},
     ]
 
     const nowDay = new Date().getDay()
